@@ -5,7 +5,7 @@ from django.shortcuts import render
 
 def index(request):
 # render the appropriate template for this request
-    return render(request,'home.htm')
+    return render(request,'home.html')
 
 
 def addEvent(request):
