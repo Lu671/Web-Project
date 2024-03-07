@@ -3,7 +3,7 @@ from django.shortcuts import render
 
 def home(request):
 # render the appropriate template for this request
-    return render(request,'ome.html')
+    return render(request,'home.html')
 
 
 def addEvent(request):
