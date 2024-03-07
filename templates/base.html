@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    
+    <title>Event Management System</title>
+    <style>
+        nav ul {
+            list-style-type: none; /* remove dot for listing */
+            display: flex; /* make items horizontally */
+        }
+
+        nav ul li {
+            margin-right: 30px; /* space between items */
+        }
+
+        nav ul li a {
+            text-decoration: underline;
+            color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Event Management System</h1>
+        <nav>
+            <ul>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'listEvents' %}">Events</a></li>
+                <li><a href="{% url 'addEvent' %}">Create Event</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer>
+        <p>&copy; 2024 - Web technologies project</p>
+    </footer>
+
+</body>
+
+</html>
