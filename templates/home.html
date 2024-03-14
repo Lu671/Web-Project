@@ -19,6 +19,10 @@
             background-color: #f2f2f2;
         }
 
+        td {
+            cursor: pointer;
+        }
+
         td:hover {
             background-color: #f2f2f2;
         }
@@ -27,6 +31,7 @@
             background-color: #e7cd80;
         }
     </style>
+    
 </head>
 
 <body>
@@ -55,7 +60,7 @@
             <td>4</td>
             <td>5</td>
             <td>6</td>
-            <td class="today">7</td>
+            <td>7</td>
             <td>8</td>
             <td>9</td>
         </tr>
@@ -90,9 +95,21 @@
             <td>31</td>
         </tr>
     </table>
+    <p><strong>Note:</strong> Yellow cell indicates today's date.</p>
 
+    <script>
+        // Get the current day
+        var today = new Date().getDate();
+        // Find the td element for today and add the 'today' class to it
+        var tds = document.getElementsByTagName('td');
+        for (var i = 0; i < tds.length; i++) {
+            if (tds[i].innerText == today.toString()) {
+                tds[i].classList.add('today');
+                break;
+            }
+        }
+    </script>
 </body>
-
 
 
 {% endblock %}
