@@ -1,12 +1,16 @@
 {% extends 'base.html' %}
 {% block content %}
-<body>
-    <header>
-        <h3>Events List</h3>
-        <hr>
-    </header>
-    <section>
-        <p> from DB (soon) </p>
-    </section>
-</body>
+
+<h2>Events List</h2>
+    <ul>
+        {% for event in events %}
+            <li>
+                <strong>{{ event.title }}</strong><br>
+                <em>Date: {{ event.date }}</em><br>
+                {{ event.description }}<br>
+                {{event.location}}<br>
+                <a href="{{ event.agenda }}">Event Agenda</a><hr>
+            </li>
+        {% endfor %}
+    </ul>
 {% endblock %}
