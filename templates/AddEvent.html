@@ -6,10 +6,18 @@
         <hr>
     </header>
     <section>
-        <p> Event Name: </p>
-        <p> Event Date: </p>
-        <p> Event Location: </p>
-
+        <form method="post">
+            {% csrf_token %}
+            <label for="id_title">Event Name:</label><br>
+            <input type="text" id="id_title" name="title" required><br><br>
+            <label for="id_date">Event Date:</label><br>
+            <input type="date" id="id_date" name="date" required><br><br>
+            <label for="id_description">Event Description:</label><br>
+            <textarea id="id_description" name="description" rows="4" cols="50" required></textarea><br><br>
+            <label for="id_location">Event Location:</label><br>
+            <input type="text" id="id_location" name="location" required><br><br>
+            <button type="submit">Add Event</button>
+        </form>
     </section>
 </body>
 {% endblock %}
