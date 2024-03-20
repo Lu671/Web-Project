@@ -4,13 +4,25 @@
 <h2>Events List</h2>
     <ul>
         {% for event in events %}
-            <li>
-                <strong>{{ event.title }}</strong><br>
-                <em>Date: {{ event.date }}</em><br>
-                {{ event.description }}<br>
-                {{event.location}}<br>
-                <a href="{{ event.agenda }}">Event Agenda</a><hr>
-            </li>
+    <li>
+        <strong>{{ event.title }}</strong><br>
+        <em>Date: {{ event.date }}</em><br>
+        {{ event.description }}<br>
+        {{ event.location }}<br>
+        <!-- <a href="{{ event.agenda }}">Event Agenda</a><br> -->
+        <hr>
+    </li>
+        {% endfor %}
+
+        {% for event in old_events %}
+    <li>
+        <strong>{{ event.title }}</strong><br>
+        <em>Date: {{ event.date }}</em><br>
+        {{ event.description }}<br>
+        {{ event.location }}<br>
+        <a href="{{ event.agenda }}">Event Agenda</a><br>
+        <hr>
+    </li>
         {% endfor %}
     </ul>
 {% endblock %}
