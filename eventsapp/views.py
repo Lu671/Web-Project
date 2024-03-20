@@ -16,7 +16,7 @@ def addEvent(request):
         event = Events(title=title, date=date, description=description, location=location)
         event.save()
         
-        return redirect('listEvents')  # Redirect to the event list page
+        return redirect('listEvents')  # Redirect to the listEvents view
     else:
         return render(request, 'AddEvent.html')
 
