@@ -2,19 +2,47 @@
 {% block content %}
 
 <h2>Events List</h2>
-    <ul>
-        {% for event in events %}
+
+<form method="get" action="">
+    <label for="month">Select a Month:</label>
+    <select name="month" id="month">
+        <option value="1">January</option>
+        <option value="2">February</option>
+        <option value="3">March</option>
+        <option value="4">April</option>
+        <option value="5">May</option>
+        <option value="6">June</option>
+        <option value="7">July</option>
+        <option value="8">August</option>
+        <option value="9">September</option>
+        <option value="10">October</option>
+        <option value="11">November</option>
+        <option value="12">December</option>
+    </select>
+    <button type="submit">Filter</button>
+</form>
+{% if month %}
+<h4>Events In {{ month }}</h4>
+{% endif %}
+<ul>
+    {% if events %}
+    {% for event in events %}
     <li>
         <strong>{{ event.title }}</strong><br>
         <em>Date: {{ event.date }}</em><br>
         {{ event.description }}<br>
         {{ event.location }}<br>
-        <!-- <a href="{{ event.agenda }}">Event Agenda</a><br> -->
         <hr>
     </li>
-        {% endfor %}
+    {% endfor %}
+    {% else %}
+    <h3>No Events Found in {{month}}</h3>
+    {% endif %}
+</ul>
 
-        {% for event in old_events %}
+<h4>Events with Agenda pdf file</h4>
+<ul>
+    {% for event in old_events %}
     <li>
         <strong>{{ event.title }}</strong><br>
         <em>Date: {{ event.date }}</em><br>
@@ -23,6 +51,6 @@
         <a href="{{ event.agenda }}">Event Agenda</a><br>
         <hr>
     </li>
-        {% endfor %}
-    </ul>
+    {% endfor %}
+</ul>
 {% endblock %}
