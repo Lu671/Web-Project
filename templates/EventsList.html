@@ -22,10 +22,13 @@
     <button type="submit">Filter</button>
 </form>
 {% if month %}
-<h4>Events In {{ month }}</h4>
+<h4>Events In {{ month }} are {{num_events}}</h4>
 {% endif %}
 <ul>
     {% if events %}
+    {% if num_events %}
+    <h4>There are {{num_events}} events.</h4>
+    {% endif %}
     {% for event in events %}
     <li>
         <strong>{{ event.title }}</strong><br>

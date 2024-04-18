@@ -31,11 +31,13 @@ def listEvents(request):
     selected_month = request.GET.get('month')
     month_name = month_names.get(int(selected_month)) if selected_month else None
     if selected_month:
-        events = Events.objects.filter(date__month=selected_month)
-        context = {'events': events, 'month':month_name, 'old_events': old_events}
+        events = Events.objects.filter(date__month=selected_month).order_by('date') # order_by
+        num_events = events.count() #count
+        context = {'events': events, 'month':month_name, 'old_events': old_events, 'num_events':num_events}
     else:
-        events = Events.objects.all()
-        context = {'events': events, 'old_events': old_events}
+        events = Events.objects.all().order_by('date') # order_by
+        num_events = events.count() #count
+        context = {'events': events, 'old_events': old_events, 'num_events':num_events}
     return render(request, 'EventsList.html', context)
 
 
