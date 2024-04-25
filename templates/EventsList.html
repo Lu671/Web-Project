@@ -35,6 +35,10 @@
         <em>Date: {{ event.date }}</em><br>
         {{ event.description }}<br>
         {{ event.location }}<br>
+        <form method="post" action="{% url 'delete_event' event.id %}">
+            {% csrf_token %}
+            <button type="submit">Delete</button>
+        </form>
         <hr>
     </li>
     {% endfor %}

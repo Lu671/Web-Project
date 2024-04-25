@@ -1,5 +1,6 @@
 from django.shortcuts import render,redirect
 from .models import Events
+from .forms import EventForm
 
 def home(request):
 # render the appropriate template for this request
@@ -8,17 +9,21 @@ def home(request):
 
 def addEvent(request):
     if request.method == 'POST':
-        title = request.POST.get('title')
-        date = request.POST.get('date')
-        description = request.POST.get('description')
-        location = request.POST.get('location')
-        
-        event = Events(title=title, date=date, description=description, location=location)
-        event.save()
-        
-        return redirect('listEvents')  # Redirect to the listEvents view
+        form = EventForm(request.POST)
+        if form.is_valid():
+            title = form.cleaned_data['title']
+            date = form.cleaned_data['date']
+            description = form.cleaned_data['description']
+            location = form.cleaned_data['location']
+            
+            event = Events(title=title, date=date, description=description, location=location)
+            event.save()
+            
+            return redirect('listEvents')  # Redirect to the event list page
     else:
-        return render(request, 'AddEvent.html')
+        form = EventForm()
+
+    return render(request, 'AddEvent.html', {'form': form})
 
 def listEvents(request):
     month_names = {1: 'January',2: 'February',3: 'March',4: 'April',5: 'May',
@@ -39,6 +44,12 @@ def listEvents(request):
         num_events = events.count() #count
         context = {'events': events, 'old_events': old_events, 'num_events':num_events}
     return render(request, 'EventsList.html', context)
+
+
+def deleteEvent(request, event_id):
+    event = Events.objects.get(pk=event_id)
+    event.delete()
+    return redirect('listEvents')  # Redirect to the event list page
 
 
  
