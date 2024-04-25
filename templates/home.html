@@ -1,26 +1,31 @@
 {% extends 'base.html' %}
 
 {% block content %}
+    <div>
+        <button onclick="prevMonth()">Previous Month</button>
+        <button onclick="nextMonth()">Next Month</button>
+    </div>
+    <table id="calendar"></table>
+    <p><strong>Note:</strong> Yellow cell indicates today's date.</p>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
+    
     <style>
         table {
             border-collapse: collapse;
             width: 100%;
         }
 
-        th,
-        td {
+        th, td {
             border: 1px solid #ddd;
             text-align: center;
             padding: 8px;
+            cursor: pointer;
         }
 
         th {
             background-color: #f2f2f2;
-        }
-
-        td {
-            cursor: pointer;
         }
 
         td:hover {
@@ -32,81 +37,55 @@
         }
     </style>
     
-</head>
-
-<body>
-    <table> <!-- Calender will change later to include all months -->
-        <caption><strong>April 2024</strong></caption>
-        <tr>
-            <th>Mon</th>
-            <th>Tue</th>
-            <th>Wed</th>
-            <th>Thu</th>
-            <th>Fri</th>
-            <th>Sat</th>
-            <th>Sun</th>
-        </tr>
-        <tr>
-            <td>1</td>
-            <td>2</td>
-            <td>3</td>
-            <td>4</td>
-            <td>5</td>
-            <td>6</td>
-            <td>7</td>
-        </tr>
-        <tr>
-            <td>8</td>
-            <td>9</td>
-            <td>10</td>
-            <td>11</td>
-            <td>12</td>
-            <td>13</td>
-            <td>14</td>
-        </tr>
-        <tr>
-            <td>15</td>
-            <td>16</td>
-            <td>17</td>
-            <td>18</td>
-            <td>19</td>
-            <td>20</td>
-            <td>21</td>
-        </tr>
-        <tr>
-            <td>22</td>
-            <td>23</td>
-            <td>24</td>
-            <td>25</td>
-            <td>26</td>
-            <td>27</td>
-            <td>28</td>
-        </tr>
-        <tr>
-            <td>29</td>
-            <td>30</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-    </table>
-    <p><strong>Note:</strong> Yellow cell indicates today's date.</p>
-
     <script>
-        // Get the current day
-        var today = new Date().getDate();
-        // Find the td element for today and add the 'today' class to it
-        var tds = document.getElementsByTagName('td');
-        for (var i = 0; i < tds.length; i++) {
-            if (tds[i].innerText == today.toString()) {
-                tds[i].classList.add('today');
-                break;
+        var currentMonth = moment().month();
+        var currentYear = moment().year();
+
+        function generateCalendar(month, year) {
+            var daysInMonth = moment([year, month]).daysInMonth();
+            var firstDay = moment([year, month, 1]).day();
+
+            var calendar = document.getElementById('calendar');
+            calendar.innerHTML = '<caption><strong>' + moment([year, month]).format('MMMM YYYY') + '</strong></caption>';
+            calendar.innerHTML += '<tr><th>Sun</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th></tr>';
+
+            var day = 1;
+            for (var i = 0; i < 6; i++) {
+                var row = '<tr>';
+                for (var j = 0; j < 7; j++) {
+                    if ((i === 0 && j < firstDay) || day > daysInMonth) {
+                        row += '<td></td>';
+                    } else {
+                        var cellDate = moment([year, month, day]);
+                        var className = cellDate.isSame(moment(), 'day') ? 'today' : '';
+                        row += '<td class="' + className + '">' + day + '</td>';
+                        day++;
+                    }
+                }
+                row += '</tr>';
+                calendar.innerHTML += row;
+                if (day > daysInMonth) break;
             }
         }
+
+        function prevMonth() {
+            currentMonth--;
+            if (currentMonth < 0) {
+                currentMonth = 11;
+                currentYear--;
+            }
+            generateCalendar(currentMonth, currentYear);
+        }
+
+        function nextMonth() {
+            currentMonth++;
+            if (currentMonth > 11) {
+                currentMonth = 0;
+                currentYear++;
+            }
+            generateCalendar(currentMonth, currentYear);
+        }
+
+        generateCalendar(currentMonth, currentYear);
     </script>
-</body>
-
-
 {% endblock %}
