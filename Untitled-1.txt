@@ -1,0 +1,31 @@
+-- database: c:\Users\HUAWEL\Desktop\webproject\EventsWebsite\db.sqlite3
+
+-- Use the ▷ button in the top right corner to run the entire file.
+INSERT INTO eventsapp_events (title, date, description, location)
+VALUES
+('Data Science Workshop', '2024-04-01', 'Learn about data analysis and machine learning', 'Data Science Hall'),
+('Artificial Intelligence Conference', '2024-04-02', 'Attend talks and discussions on AI applications', 'AI Auditorium'),
+('Cybersecurity Summit', '2024-04-03', 'Discuss cybersecurity challenges and solutions', 'Cybersecurity Center'),
+('Space Exploration Seminar', '2024-04-04', 'Learn about the latest advancements in space exploration', 'Space Center'),
+('Internet of Things (IoT) Conference', '2024-04-05', 'Discover the impact of IoT on various industries', 'IoT Center'),
+
+('Hackathon: Code for Change', '2024-05-01', 'Collaborate to solve real-world problems through coding', 'Coding Hub'),
+('Machine Learning Conference', '2024-05-02', 'Attend talks on the latest trends in machine learning', 'ML Auditorium'),
+('Quantum Computing Symposium', '2024-05-03', 'Explore the principles and applications of quantum computing', 'Quantum Lab'),
+('Bioinformatics Workshop', '2024-05-04', 'Learn about the intersection of biology and computer science', 'Bioinformatics Lab'),
+('Renewable Energy Forum', '2024-05-05', 'Discuss renewable energy sources and sustainable practices', 'Renewable Energy Hall'),
+
+('Space Technology Workshop', '2024-06-01', 'Explore technologies used in space missions and research', 'Space Tech Lab'),
+('Virtual Reality Experience', '2024-06-02', 'Experience immersive VR environments and applications', 'VR Lab'),
+('Augmented Reality Showcase', '2024-06-03', 'Experience AR applications and developments', 'AR Center'),
+('Biotechnology Conference', '2024-06-04', 'Learn about biotech innovations and research', 'Biotech Auditorium'),
+('Blockchain Workshop', '2024-06-05', 'Understand the fundamentals of blockchain technology', 'Blockchain Lab'),
+
+('Renewable Energy Hackathon', '2024-07-01', 'Develop solutions for renewable energy challenges', 'Energy Hackathon Center'),
+('Virtual Reality Game Development', '2024-07-02', 'Learn to develop VR games and experiences', 'VR Game Dev Lab'),
+('Space Technology Workshop', '2024-07-03', 'Explore technologies used in space missions and research', 'Space Tech Lab'),
+('Machine Learning Conference', '2024-07-04', 'Attend talks on the latest trends in machine learning', 'ML Auditorium'),
+('Bioinformatics Hackathon', '2024-07-05', 'Solve bioinformatics challenges through coding', 'Bioinformatics Hackathon Center');
+
+SELECT * FROM eventsapp_events
+ORDER BY `title` ASC;

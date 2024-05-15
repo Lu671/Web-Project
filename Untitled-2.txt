@@ -1,0 +1,34 @@
+-- database: c:\Users\HUAWEL\Desktop\webproject\EventsWebsite\db.sqlite3
+
+-- Use the ▷ button in the top right corner to run the entire file.
+
+INSERT INTO eventsapp_events (title, date, description, location)
+VALUES
+('Tech Symposium: Future Tech Trends', '2024-04-15', 'Explore the latest trends and innovations in technology', 'Tech Center'),
+('Robotics Competition', '2024-05-02', 'Compete in exciting robotics challenges', 'Robotics Lab'),
+('Data Science Workshop', '2024-04-20', 'Learn about data analysis and machine learning', 'Data Science Hall'),
+('Artificial Intelligence Conference', '2024-04-25', 'Attend talks and discussions on AI applications', 'AI Auditorium'),
+('Hackathon: Code for Change', '2024-05-10', 'Collaborate to solve real-world problems through coding', 'Coding Hub'),
+('Cybersecurity Summit', '2024-04-18', 'Discuss cybersecurity challenges and solutions', 'Cybersecurity Center'),
+('Quantum Computing Symposium', '2024-05-05', 'Explore the principles and applications of quantum computing', 'Quantum Lab'),
+('Tech Startup Pitch Event', '2024-05-15', 'Pitch your tech startup idea to potential investors', 'Startup Hub'),
+('Virtual Reality Experience', '2024-05-08', 'Experience immersive VR environments and applications', 'VR Lab'),
+('Internet of Things (IoT) Conference', '2024-04-22', 'Discover the impact of IoT on various industries', 'IoT Center'),
+('Bioinformatics Workshop', '2024-05-12', 'Learn about the intersection of biology and computer science', 'Bioinformatics Lab'),
+('3D Printing Expo', '2024-04-27', 'See the latest advancements in 3D printing technology', '3D Printing Studio'),
+('Renewable Energy Forum', '2024-05-03', 'Discuss renewable energy sources and sustainable practices', 'Renewable Energy Hall'),
+('Nanotechnology Symposium', '2024-05-17', 'Explore the world of nanoscale science and engineering', 'Nano Lab'),
+('Augmented Reality Showcase', '2024-05-01', 'Experience AR applications and developments', 'AR Center'),
+('Biotechnology Conference', '2024-05-06', 'Learn about biotech innovations and research', 'Biotech Auditorium'),
+('Tech Career Fair', '2024-04-29', 'Connect with tech companies and explore job opportunities', 'Career Center'),
+('Blockchain Workshop', '2024-05-13', 'Understand the fundamentals of blockchain technology', 'Blockchain Lab'),
+('Genetic Engineering Symposium', '2024-04-23', 'Discuss the latest advancements in genetic engineering', 'Genetic Engineering Hall'),
+('Renewable Energy Hackathon', '2024-05-11', 'Develop solutions for renewable energy challenges', 'Energy Hackathon Center'),
+('Virtual Reality Game Development', '2024-05-16', 'Learn to develop VR games and experiences', 'VR Game Dev Lab'),
+('Space Technology Workshop', '2024-04-26', 'Explore technologies used in space missions and research', 'Space Tech Lab'),
+('Machine Learning Conference', '2024-05-07', 'Attend talks on the latest trends in machine learning', 'ML Auditorium'),
+('Bioinformatics Hackathon', '2024-05-20', 'Solve bioinformatics challenges through coding', 'Bioinformatics Hackathon Center'),
+('Quantum Computing Hackathon', '2024-04-24', 'Collaborate to solve quantum computing challenges', 'Quantum Hackathon Center'),
+('AR/VR Hackathon', '2024-05-09', 'Create innovative AR/VR applications in a hackathon', 'AR/VR Hackathon Center'),
+('Tech Innovation Expo', '2024-05-18', 'Showcase innovative tech projects and products', 'Innovation Expo Center'),
+('Tech and Science Fair', '2024-04-28', 'Explore science and technology projects by students', 'Fairgrounds');
