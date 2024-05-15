@@ -67,8 +67,8 @@ th{
 }
 
 td, th {
-    border: 1px solid #135D66; /* Add a 1px solid border to all table cells */
-    padding: 8px; /* Add some padding to the cells for better spacing */
+    border: 1px solid #135D66; 
+    padding: 8px; 
 }
 h4{
     color:#135D66;
