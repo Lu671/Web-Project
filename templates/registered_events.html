@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'eventsapp/css/eventslist.css' %}">
+<h2>Registered Events</h2>
+
+<ul>
+    {% if events %}
+    {% for event in events %}
+    <!-- <li> -->
+        <div class="event-card">
+            <strong>{{ event.title }}</strong><br>
+            <em>Date: {{ event.date }}</em><br>
+            <!-- {{ event.description }}<br>
+            {{ event.location }}<br> -->
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#event-details-{{ event.id }}">
+                More Info
+              </button>
+        </div>
+        <!-- <hr> -->
+    <!-- </li> -->
+    {% endfor %}
+    {% else %}
+    <h3>No Events Found</h3>
+    {% endif %}
+</ul>
+
+<!--  Modal -->
+{% for event in events %}
+<div class="modal fade" id="event-details-{{ event.id }}" tabindex="-1" aria-labelledby="eventDetailsModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+        <h5 class="modal-title" id="eventDetailsModalLabel">Event details</h5>
+        <!--<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>-->
+        </div>
+        <div class="modal-body">
+            <!-- <strong> {{ event.title }}</strong><br><br>
+            <em><strong>Date:</strong> {{ event.date }}</em><br><br>
+            <strong>Description:</strong> {{ event.description }}<br><br>
+            <strong>Location:</strong> {{ event.location }}<br> -->
+            <h3>{{ event.title }}</h3>
+            <p>{{ event.description }}</p>
+            <p>Date: {{ event.date }}</p>
+            <p>Location: {{ event.location }}</p>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary filter-btn right-content" data-dismiss="modal">Close</button>
+        </div>
+    </div>
+    </div>
+</div>
+{% endfor %}
+{% endblock %}
+
+

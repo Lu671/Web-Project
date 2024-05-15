@@ -1,0 +1,75 @@
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    text-align: center;
+    padding: 8px;
+    cursor: pointer;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+td:hover {
+    background-color: #f2f2f2;
+}
+
+.today {
+    background-color: #ffffff;
+}
+h2{
+    color:#135D66;
+    font-weight: bold; /* Make the text bold */
+    text-align: center; /* Center-align the text */
+    margin-bottom: 50px;
+}
+
+#calendar-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+#calendar-header button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    color: #135D66;
+}
+
+#currentMonth {
+    margin: 0;
+}
+
+
+.event-title {
+    display: block; /* Put the title on a new line */
+    font-weight: bold; /* Make the title bold */
+    color: #135D66; /* Set the color of the title */
+    font-size: 10px;
+}
+.day-number {
+    font-size: 25px;
+}
+table {
+    border-collapse: collapse; /* Collapse borders into a single border */
+    border: 1px solid #ccc; /* Add a 1px solid border around the table */
+}
+th{
+    background-color: #135D66;
+    color:white;
+}
+
+td, th {
+    border: 1px solid #135D66; /* Add a 1px solid border to all table cells */
+    padding: 8px; /* Add some padding to the cells for better spacing */
+}
+h4{
+    color:#135D66;
+}

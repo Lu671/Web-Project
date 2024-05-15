@@ -1,73 +1,67 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <div>
-        <button onclick="prevMonth()">Previous Month</button>
-        <button onclick="nextMonth()">Next Month</button>
-    </div>
-    <table id="calendar"></table>
-    <p><strong>Note:</strong> Yellow cell indicates today's date.</p>
+{% load static %}
+<link rel="stylesheet" href="{% static 'eventsapp/css/home.css' %}">
+
+<h2>Events Calendar</h2>
+<div id="calendar-header">
+    <button onclick="prevMonth()"><i class="fas fa-chevron-left"></i></button>
+    <h4 id="currentMonth"></h4>
+    <button onclick="nextMonth()"><i class="fas fa-chevron-right"></i></button>
+</div>
+<table id="calendar"></table>
+<!-- <p><strong>Note:</strong> Yellow cell indicates today's date.</p> -->
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
-    
-    <style>
-        table {
-            border-collapse: collapse;
-            width: 100%;
-        }
-
-        th, td {
-            border: 1px solid #ddd;
-            text-align: center;
-            padding: 8px;
-            cursor: pointer;
-        }
-
-        th {
-            background-color: #f2f2f2;
-        }
-
-        td:hover {
-            background-color: #f2f2f2;
-        }
-
-        .today {
-            background-color: #e7cd80;
-        }
-    </style>
-    
-    <script>
-        var currentMonth = moment().month();
+    <script>var currentMonth = moment().month();
         var currentYear = moment().year();
-
+        // var eventsList = JSON.parse('{{ events_list|safe }}');
+        // var eventsList = [{ "date": "2024-04-30", "title": "Event 1" }, { "date": "2024-04-15", "title": "Event 2" }];
+        // var eventsList = '{{ events|safe }}';
+        var eventsList = JSON.parse('{{ events_list_json|safe }}');
+        console.log(eventsList);
+        
         function generateCalendar(month, year) {
-            var daysInMonth = moment([year, month]).daysInMonth();
-            var firstDay = moment([year, month, 1]).day();
+    var daysInMonth = moment([year, month]).daysInMonth();
+    var firstDay = moment([year, month, 1]).day();
 
-            var calendar = document.getElementById('calendar');
-            calendar.innerHTML = '<caption><strong>' + moment([year, month]).format('MMMM YYYY') + '</strong></caption>';
-            calendar.innerHTML += '<tr><th>Sun</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th></tr>';
+    var calendar = document.getElementById('calendar');
+    var tableHTML = '<tr><th>Sun</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th></tr>';
+    
+    var day = 1;
+    for (var i = 0; i < 6; i++) {
+        var row = '<tr>';
+        for (var j = 0; j < 7; j++) {
+            if ((i === 0 && j < firstDay) || day > daysInMonth) {
+                row += '<td></td>';
+            } else {
+                var cellDate = moment([year, month, day]);
+                var className = cellDate.isSame(moment(), 'day') ? 'today' : '';
+                var event = eventsList.find(function(event) {
+                    return moment(event.date).isSame(cellDate, 'day');
+                });
+                var eventsHtml = event ?  '</span><br><span class="event-dot"></span><span class="event-title">' + event.title + '</span>' : '';
 
-            var day = 1;
-            for (var i = 0; i < 6; i++) {
-                var row = '<tr>';
-                for (var j = 0; j < 7; j++) {
-                    if ((i === 0 && j < firstDay) || day > daysInMonth) {
-                        row += '<td></td>';
-                    } else {
-                        var cellDate = moment([year, month, day]);
-                        var className = cellDate.isSame(moment(), 'day') ? 'today' : '';
-                        row += '<td class="' + className + '">' + day + '</td>';
-                        day++;
-                    }
-                }
-                row += '</tr>';
-                calendar.innerHTML += row;
-                if (day > daysInMonth) break;
+                row += '<td class="' + className + '">' + '<span class="day-number">' + day + eventsHtml + '</td>';
+                day++;
             }
         }
+        row += '</tr>';
+        tableHTML += row;
+        if (day > daysInMonth) break;
+    }
 
+    // Update current month and year in the heading
+    document.getElementById('currentMonth').textContent = moment([year, month]).format('MMMM YYYY');
+    
+    // Set the table HTML
+    calendar.innerHTML = tableHTML;
+}
+
+        
+        
         function prevMonth() {
             currentMonth--;
             if (currentMonth < 0) {
@@ -76,7 +70,7 @@
             }
             generateCalendar(currentMonth, currentYear);
         }
-
+        
         function nextMonth() {
             currentMonth++;
             if (currentMonth > 11) {
@@ -85,7 +79,7 @@
             }
             generateCalendar(currentMonth, currentYear);
         }
+        
+        generateCalendar(currentMonth, currentYear);</script>
 
-        generateCalendar(currentMonth, currentYear);
-    </script>
 {% endblock %}

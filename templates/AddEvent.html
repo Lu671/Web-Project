@@ -1,16 +1,17 @@
 {% extends 'base.html' %}
 {% block content %}
-<body>
-    <header>
-        <h3>Add Event</h3>
-        <hr>
-    </header>
+{% load static %}
+<link rel="stylesheet" href="{% static 'eventsapp/css/addevent.css' %}">
+<h2>Add New Event</h2>
     <section>
         <form method="post">
             {% csrf_token %}
             {{ form.as_p }}
             <button type="submit">Add Event</button>
         </form>
+
     </section>
-</body>
+
+<style>
+</style>
 {% endblock %}

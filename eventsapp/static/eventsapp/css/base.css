@@ -1,0 +1,78 @@
+/* Set background color for the body */
+body {
+    background-color: #f0f0f0; /* Light gray background color */
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+    font-family: Georgia, serif;
+}
+
+/* Style for header */
+header {
+    background-color: #135D66; /* Dark gray background color for the header */
+    color: #B6C4B6; /* Text color for the header */
+    padding: 10px; /* Padding around the header */
+    text-align: center; /* Center align header content */
+}
+
+/* Style for navigation menu */
+nav {
+    background-color: #B6C4B6; /* Darker gray background color for the navigation menu */
+    padding: 1px; /* Padding around the navigation menu */
+}
+
+nav ul {
+    list-style-type: none; /* Remove bullet points */
+    display: flex; /* Display items horizontally */
+    justify-content: center; /* Center items horizontally */
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+}
+
+nav ul li {
+    margin-right: 50px; /* Space between menu items */
+}
+
+nav ul li a {
+    text-decoration: none; /* Remove underline from links */
+    color: #135D66; /* Link text color */
+    font-weight: bold; /* Bold text */
+}
+
+nav ul li a:hover {
+    text-decoration: underline; /* Underline on hover */
+    color:#EEF0E5;
+}
+
+/* Style for main content */
+main {
+    background-color: #EEF0E5; /* White background color for the main content area */
+    padding: 20px; /* Padding around the main content area */
+    min-height: 650px; /* Minimum height of the main content area */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    font-family: Georgia, serif;
+}
+
+/* Style for footer */
+footer {
+    background-color: #135D66; /* Dark gray background color for the footer */
+    color: #B6C4B6; /* Text color for the footer */
+    padding: 10px; /* Padding around the footer */
+    text-align: center; /* Center align footer content */
+}
+
+
+button{
+    text-decoration: underline; /* Remove underline from links */
+    color: #217884; /* Link text color */
+    font-weight: bold; /* Bold text */
+    background:none;
+    border: none;
+    text-align: left; /* Align text to the left */
+    font-size: 15px;
+}
+
+namest{
+    color: #135D66; /* Link text color */
+    font-weight: bold;
+    font-size: 20px;
+}

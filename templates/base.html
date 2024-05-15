@@ -5,38 +5,49 @@
 <head>
     
     <title>Event Management System</title>
-    <style>
-        nav ul {
-            list-style-type: none; /* remove dot for listing */
-            display: flex; /* make items horizontally */
-        }
+    <!-- Bootstrap CSS -->
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 
-        nav ul li {
-            margin-right: 30px; /* space between items */
-        }
+<!-- Bootstrap JS and jQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
-        nav ul li a {
-            text-decoration: underline;
-            color: black;
-        }
-    </style>
 </head>
-
+<link rel="stylesheet" href="{% static 'eventsapp/css/base.css'%}?v=2.0">
 <body>
     <header>
-        <h1>Event Management System <img src="{% static 'eventsapp/images/icon.jpg' %}" height="50" width="50"></h1>
+        <h1>Event Management System</h1>
+        
+         <!-- <img src="{% static 'eventsapp/images/icon.jpg' %}" height="50" width="50"></h1> -->
         
         <nav>
             <ul>
                 <li><a href="{% url 'home' %}">Home</a></li>
                 <li><a href="{% url 'listEvents' %}">Events</a></li>
-                <li><a href="{% url 'addEvent' %}">Create Event</a></li>
+                <li><a href="{% url 'addEvent' %}">Add Event</a></li>
+                {% if user.is_authenticated %}
+                <li><a href="{% url 'registered_events'%}">Registered Events</a></li>
+                {% else %}
+                    <li><a href="{% url 'login' %}">Log In</a></li>
+                {% endif %}
+
             </ul>
         </nav>
+        
     </header>
 
     <main>
+            {% if user.is_authenticated %}
+                <namest>Hello {{ user.first_name }}</namest>
+                <form action="{% url 'logout' %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit">Logout</button>
+                </form>
+                {% endif %}
         {% block content %}
+        
         {% endblock %}
     </main>
 
