@@ -24,6 +24,9 @@
     <button type="submit" class="filter-btn">Filter</button>
 </form>
 <ul>
+    {% for m in messages%}
+    <p>{{m}}</p>
+    {% endfor %}
     {% if events %}
     <h4>{{num_events}} events</h4>
     {% for event in events %}
